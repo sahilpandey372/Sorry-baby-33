@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Girl ❤️</title>
+    <style>
+        :root {
+            --primary-pink: #ff4d6d;
+            --bg-color: #fff0f3;
+            --deep-blue: #0077b6;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            overflow: hidden;
+            transition: background-color 1s ease;
+        }
+
+        #main-card {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 90%;
+            width: 400px;
+        }
+
+        h1 { color: var(--primary-pink); margin-bottom: 10px; }
+        p { color: #555; line-height: 1.5; margin-bottom: 25px; }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            height: 50px;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+
+        #yesBtn { background-color: #2ec4b6; color: white; }
+        #noBtn { background-color: var(--primary-pink); color: white; }
+
+        /* Full Screen Message Style */
+        #final-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--deep-blue);
+            color: white;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+            z-index: 100;
+        }
+
+        #final-screen h2 { font-size: 2.5rem; padding: 20px; }
+    </style>
+</head>
+<body>
+
+    <div id="main-card">
+        <h1>I'm Sorry Love 🥺</h1>
+        <p>I promise to make you happy and keep making you happy every single day.</p>
+        <p><strong>Forgive me?</strong></p>
+        
+        <div class="button-container">
+            <button id="yesBtn" onclick="showFinal()">Yes</button>
+            <button id="noBtn" onclick="handleNo()">No</button>
+        </div>
+    </div>
+
+    <div id="final-screen">
+        <h2>I love you and will do forever and ever... <br> Forgive me baby... <br> I’ll be the best man. ❤️</h2>
+    </div>
+
+    <script>
+        // 1. Immediate Alert on Load
+        window.onload = function() {
+            alert("I'm sorry love, and I promise to make you happy and keep making you happy..");
+        };
+
+        let noCount = 0;
+        const noBtn = document.getElementById('noBtn');
+
+        function handleNo() {
+            noCount++;
+            
+            // 2. Change text to "Yes" temporarily or move it
+            noBtn.innerText = "Yes";
+            
+            // If they reach 10 clicks
+            if (noCount >= 10) {
+                showFinal();
+                return;
+            }
+
+            // Move the button to a random spot to make it "fun" to chase
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+
+            // Reset text back to No after a split second
+            setTimeout(() => {
+                noBtn.innerText = "No";
+            }, 300);
+        }
+
+        function showFinal() {
+            document.getElementById('final-screen').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
